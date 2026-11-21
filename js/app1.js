@@ -107,9 +107,13 @@ function BIG(u){var m=/img\/([0-9a-f]{12})-\d+\.webp/.exec(u||''),w=m&&IMGW[m[1]
   var hdr=document.querySelector('header'),btn=document.getElementById('menuBtn'),panel=document.getElementById('panel');
   function onScroll(){hdr.classList.toggle('solid',document.body.classList.contains('inner')||scrollY>document.getElementById('hero').offsetHeight-80);}
   addEventListener('scroll',onScroll,{passive:true});onScroll();
-  function close(){hdr.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';}
-  btn.addEventListener('click',function(){var o=!hdr.classList.contains('open');hdr.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));btn.textContent=o?'Chiudi':'Menu';});
-  Array.prototype.forEach.call(panel.querySelectorAll('a'),function(a){a.addEventListener('click',close);});
+  var nav=panel.querySelector('nav');nav.id='mainNav';nav.className='hnav';hdr.querySelector('.wrap').insertBefore(nav,hdr.querySelector('.hdr-r'));btn.setAttribute('aria-controls','mainNav');
+  var X='<svg class="x" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 2L18 18M18 2L2 18" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>';
+  function set(o){hdr.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));if(o){btn.innerHTML=X;btn.setAttribute('aria-label','Chiudi menu');}else{btn.textContent='Menu';btn.removeAttribute('aria-label');}}
+  function close(){set(false);}
+  btn.addEventListener('click',function(){set(!hdr.classList.contains('open'));});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr.classList.contains('open')){close();btn.focus();}});
+  Array.prototype.forEach.call(nav.querySelectorAll('a'),function(a){a.addEventListener('click',close);});
 })();
 (function(){
   var hero=document.getElementById('hero');
