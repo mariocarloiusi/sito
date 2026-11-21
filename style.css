@@ -345,3 +345,7 @@ a.dl{text-decoration:underline;text-underline-offset:4px}
 
 .tsec{margin-top:72px;padding:0;border-top:0}
 .tsec h2{margin:0 0 20px;font-size:22px;font-weight:500}
+
+.recent{margin:0 0 64px}
+.recent .yh{margin-bottom:20px}
+#opere-home .recent{padding-bottom:56px;border-bottom:1px solid var(--line)}
