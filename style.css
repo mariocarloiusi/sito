@@ -342,3 +342,6 @@ details.more[open] summary{display:none}
 .xw-txt p{max-width:60ch;margin:0 0 14px;line-height:1.6}
 a.dl{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:860px){.xw{grid-template-columns:minmax(0,1fr);gap:18px}}
+
+.tsec{margin-top:72px;padding:0;border-top:0}
+.tsec h2{margin:0 0 20px;font-size:22px;font-weight:500}
