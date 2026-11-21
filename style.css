@@ -1,5 +1,5 @@
 *,*::before,*::after{box-sizing:border-box}html,body{margin:0}
-:root{--img-exitus:url("img/235b5e581158.jpg");--img-luminis:url("img/b1eeed0c311d.jpg")}
+:root{--img-exitus:url("img/235b5e581158-2400.webp");--img-luminis:url("img/b1eeed0c311d-2000.webp")}
 /* Layout: white-cube gallery pages (Gagosian / Gormley sobriety) opened by one dark "room" where the visitor's pointer is the light. */
 :root{
   --paper:#ffffff; --ink:#0a0a0a; --muted:#6b6b6b; --line:#e4e4e4; --tile:#f3f3f3;
