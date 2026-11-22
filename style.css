@@ -365,3 +365,10 @@ a.dl{text-decoration:underline;text-underline-offset:4px}
  .stops li a{grid-template-columns:minmax(0,1fr) 84px!important;column-gap:16px;align-items:center}
  .stops .th{display:block;grid-column:2;grid-row:1 / span 3;width:84px;aspect-ratio:4/3;background:#0e0e0f center/cover no-repeat}
  .stops:hover li a{opacity:1}}
+
+/* Teoria Semeion */
+.ts-fig{margin:32px 0 48px;max-width:560px;background:#fff;padding:16px}
+.ts-fig img{display:block;width:100%;height:auto}
+.ts-txt h2{margin-top:40px}
+.ts-it{max-width:66ch}
+.ts-n{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-right:4px}
