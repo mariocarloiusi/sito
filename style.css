@@ -95,7 +95,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .hero .now .pl{font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.9)}
 .hero .now .dt{font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums}
 .hero:not([data-mode="foto"]) .now{display:none}
-@media (max-width:720px){.hero[data-mode="foto"] .hint{display:none}.hero .photo{background-position:50% 60%}.hero .now{bottom:28px}.hero .inner{padding-bottom:64px}.hero .cue{display:none}}
+@media (max-width:720px){.hero[data-mode="foto"] .hint{display:none}.hero .photo{background-position:45% 60%}.hero .now{bottom:28px}.hero .inner{padding-bottom:64px}.hero .cue{display:none}}
 .hero .halo{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--x) var(--y),rgba(255,233,180,.13),transparent 28%)}
 .hero .hint{position:absolute;top:22px;right:var(--gut-r);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5d5b55;z-index:2}
 .hero .hint span{color:#8d8a80}
