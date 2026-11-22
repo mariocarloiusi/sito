@@ -348,4 +348,4 @@ a.dl{text-decoration:underline;text-underline-offset:4px}
 
 .recent{margin:0 0 64px}
 .recent .yh{margin-bottom:20px}
-#opere-home .recent{padding-bottom:56px;border-bottom:1px solid var(--line)}
+#opere-home .recent{margin-bottom:0}
