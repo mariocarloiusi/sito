@@ -108,6 +108,39 @@ html.scuro .uniche .card .media{background:var(--sheet)}
 .tote svg{width:40%}
 .tote.black{background:#141414;color:#e8e1d2}
 .tote.black::before,.tote.black::after{border-color:#222}
+.lframe{width:80%;aspect-ratio:2/3;background:radial-gradient(120% 90% at 50% 45%,#2a2925 0%,#141413 60%,#0b0b0a 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.lframe i{display:block;width:62%;aspect-ratio:2/3;border:3px solid #fff7e3;border-radius:1px;box-shadow:0 0 6px 1px rgba(255,240,205,.95),0 0 26px 6px rgba(255,228,170,.45),inset 0 0 18px 2px rgba(255,236,190,.35)}
+.scarf{width:84%;aspect-ratio:1;background:#f4efe4;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.13);transform:rotate(-4deg);border:6px solid #1b1b1b;outline:1px solid #f4efe4;outline-offset:-12px}
+.scarf img{width:56%;mix-blend-mode:multiply;opacity:.92}
+.scarf.blu{background:#1d2a44;border-color:#e9e1cf;outline-color:#1d2a44}.scarf.blu img{filter:invert(1);mix-blend-mode:screen}
+.puzzle{position:relative;width:92%;aspect-ratio:4/3;background:#111;box-shadow:0 10px 26px rgba(0,0,0,.16);padding:5%;display:flex;flex-direction:column;gap:5%}
+.puzzle .pz{position:relative;flex:1;overflow:hidden}
+.puzzle .pz img{width:100%;height:100%;object-fit:cover}
+.puzzle .pz::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);background-size:10% 14.3%}
+.puzzle .lb{display:flex;justify-content:space-between;color:#eee;font-size:clamp(7px,.8vw,11px);letter-spacing:.04em}
+.puzzle .lb b{font-family:var(--f-title);font-style:italic;font-weight:500;font-size:1.5em}
+.pendant{position:relative;width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fbfbfb 0%,#d9d9d9 35%,#a9a9a9 70%,#cfcfcf 100%);display:flex;align-items:center;justify-content:center;color:#5a5a5a;box-shadow:0 8px 20px rgba(0,0,0,.18),inset 0 0 0 3px rgba(255,255,255,.5);margin-top:18%}
+.pendant::before{content:"";position:absolute;top:-14%;left:50%;width:12%;aspect-ratio:1;transform:translateX(-50%);border:3px solid #bdbdbd;border-radius:50%}
+.pendant::after{content:"";position:absolute;bottom:113%;left:50%;width:1px;height:60%;background:linear-gradient(#0000,#9a9a9a)}
+.pendant svg{width:54%;opacity:.85}
+.cards{position:relative;width:78%;aspect-ratio:1}
+.cards img{position:absolute;width:76%;aspect-ratio:3/2;object-fit:cover;border:5px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.cards img:nth-child(1){left:0;top:8%;transform:rotate(-7deg)}
+.cards img:nth-child(2){right:0;top:28%;transform:rotate(5deg)}
+.cards img:nth-child(3){left:10%;bottom:6%;transform:rotate(-1deg)}
+.notebook{position:relative;width:62%;aspect-ratio:.72;background:#1a1a1a;border-radius:2px 6px 6px 2px;box-shadow:0 10px 24px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center}
+.notebook::before{content:"";position:absolute;left:7%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.12)}
+.notebook::after{content:"";position:absolute;right:12%;top:0;bottom:0;width:4px;background:#8a6b3c}
+.notebook img{width:58%;filter:invert(1);mix-blend-mode:screen;opacity:.85}
+.plate{width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 58%,#f3f3f1 59%,#fff 64%,#f6f6f4 100%);box-shadow:0 10px 24px rgba(0,0,0,.14),inset 0 0 0 1px #e6e6e2;display:flex;align-items:center;justify-content:center}
+.plate img{width:44%;mix-blend-mode:multiply}
+.pp .gal .m .lframe{width:min(62%,340px)}
+.pp .gal .m .scarf{width:min(78%,460px)}
+.pp .gal .m .puzzle{width:min(92%,560px)}
+.pp .gal .m .pendant{width:min(46%,240px)}
+.pp .gal .m .cards{width:min(80%,480px)}
+.pp .gal .m .notebook{width:min(54%,300px)}
+.pp .gal .m .plate{width:min(74%,420px)}
 
 /* info */
 .info{padding-block:72px;border-top:1px solid var(--line);margin-top:48px}
@@ -232,7 +265,7 @@ var CAT=[
    lede:{it:'Piccoli pezzi unici dalla serie Impostori: vernice su vetroresina, 29 × 21 cm. Ognuno esiste in un solo esemplare.',
          en:'Small unique pieces from the Impostori series: paint on fibreglass, 29 × 21 cm. Each one exists only once.'}},
   {id:'oggetti', it:'Poster e oggetti', en:'Posters and objects',
-   lede:{it:'Poster delle mostre e oggetti con il segno di Luminis.', en:'Exhibition posters and objects bearing the Luminis sign.'}},
+   lede:{it:'Poster delle mostre e oggetti con i segni di Luminis e della teoria Semeion.', en:'Exhibition posters and objects bearing the signs of Luminis and the Semeion theory.'}},
   {id:'libri', it:'Libri', en:'Books',
    lede:{it:'Cataloghi delle mostre.', en:'Exhibition catalogues.'}}
 ];
@@ -279,6 +312,13 @@ var P=[
    dati:{tecnica:{it:'Serigrafia a un colore su carta Fabriano Rosaspina 285 g',en:'One-colour screenprint on Fabriano Rosaspina 285 gsm paper'},anno:'2026',firma:{it:'Firmata e numerata a matita, con certificato',en:'Signed and numbered in pencil, with certificate'}},
    desc:{it:['Lo schema della teoria Semeion, disegnato dall\'artista, tradotto in un multiplo serigrafico. È il fondamento da cui nascono Luminis e le serie degli ultimi anni.'],
          en:['The diagram of the Semeion theory, drawn by the artist, translated into a screenprinted multiple. It is the foundation from which Luminis and the recent series grew.']}},
+  {id:'cornice-di-luce', cat:'edizioni', titolo:'Luminis da casa',
+   sub:{it:'Cornice di luce, edizione di 50',en:'Frame of light, edition of 50'},
+   media:{kind:'lframe'}, extra:['2b0c382dbc7d-1280'],
+   varianti:[{it:'20 × 30 cm · ed. 50',en:'20 × 30 cm · ed. 50',prezzo:240,stripe:''},{it:'40 × 60 cm · ed. 20',en:'40 × 60 cm · ed. 20',prezzo:420,stripe:''}],
+   dati:{tecnica:{it:'Cornice in alluminio con striscia LED a luce calda, alimentatore USB-C',en:'Aluminium frame with warm-light LED strip, USB-C power'},anno:'2026',firma:{it:'Firmata e numerata sul retro, con certificato',en:'Signed and numbered on the back, with certificate'}},
+   desc:{it:['Una cornice di luce come quelle di Luminis, in piccolo, da appendere o appoggiare. Incornicia un pezzo di muro di casa, come le installazioni hanno incorniciato le mura di Alatri o i Cisternoni di Albano.'],
+         en:['A frame of light like those of Luminis, at a domestic scale, to hang or lean against a wall. It frames a piece of your own wall, as the installations framed the walls of Alatri or the Cisternoni of Albano.']}},
 
   /* ---------- Opere uniche (Impostori D) ---------- */
 ].concat(['72cf7d2e3c6e','5d06adc70433','7bb9abeb9c12','694ed3c59327','59140cdf1977','19f018394194','0930fefb3fa7','d6ead0d89d0d','427e11c61a36'].map(function(h,i){
@@ -315,6 +355,42 @@ var P=[
    varianti:[{it:'Naturale',en:'Natural',prezzo:25,stripe:'',tote:''},{it:'Nera',en:'Black',prezzo:25,stripe:'',tote:'black'}],
    dati:{tecnica:{it:'Cotone biologico 280 g, serigrafia a un colore',en:'280 gsm organic cotton, one-colour screenprint'},misure:'38 × 42 cm'},
    desc:{it:['Una borsa robusta con il pittogramma di Luminis, il segno che ha accompagnato le cinque tappe del progetto.'],en:['A sturdy bag with the Luminis pictogram, the sign that accompanied the five venues of the project.']}},
+  {id:'foulard-semeion', cat:'oggetti', titolo:'Foulard Semeion',
+   sub:{it:'Seta stampata a Como, 90 × 90 cm',en:'Silk printed in Como, 90 × 90 cm'},
+   media:{kind:'scarf'},
+   varianti:[{it:'Avorio',en:'Ivory',prezzo:150,stripe:'',scarf:''},{it:'Blu notte',en:'Night blue',prezzo:150,stripe:'',scarf:'blu'}],
+   dati:{tecnica:{it:'Twill di seta 100%, orli arrotolati a mano',en:'100% silk twill, hand-rolled edges'},misure:'90 × 90 cm'},
+   desc:{it:['Lo schema della teoria Semeion disegnato da Mario Carlo Iusi, stampato su seta. Arriva in una scatola con un breve testo sulla teoria.'],en:['The diagram of the Semeion theory drawn by Mario Carlo Iusi, printed on silk. It comes in a box with a short text on the theory.']}},
+  {id:'puzzle-luminis', cat:'oggetti', titolo:'Puzzle Luminis',
+   sub:{it:'1000 pezzi, 50 × 70 cm',en:'1000 pieces, 50 × 70 cm'},
+   media:{kind:'puzzle'},
+   varianti:[{it:'1000 pezzi',en:'1000 pieces',prezzo:35,stripe:''}],
+   dati:{tecnica:{it:'Cartone riciclato, scatola con la foto',en:'Recycled board, boxed with the photograph'},misure:'50 × 70 cm'},
+   desc:{it:['La foto notturna di Luminis sul Lungotevere, con la cupola di San Pietro, in 1000 pezzi.'],en:['The night photograph of Luminis on the Lungotevere, with the dome of St Peter\'s, in 1000 pieces.']}},
+  {id:'ciondolo-luminis', cat:'oggetti', titolo:'Ciondolo Luminis',
+   sub:{it:'Argento 925, con catenina',en:'Sterling silver, with chain'},
+   media:{kind:'pendant'},
+   varianti:[{it:'Argento',en:'Silver',prezzo:120,stripe:''}],
+   dati:{tecnica:{it:'Argento 925 inciso, catenina 45 cm',en:'Engraved sterling silver, 45 cm chain'},misure:'Ø 2 cm'},
+   desc:{it:['Il pittogramma di Luminis inciso su un piccolo disco d\'argento, realizzato da un orafo.'],en:['The Luminis pictogram engraved on a small silver disc, made by a goldsmith.']}},
+  {id:'cartoline-luminis', cat:'oggetti', titolo:'Cartoline Luminis',
+   sub:{it:'Set di 5, una per tappa',en:'Set of 5, one per venue'},
+   media:{kind:'cards'},
+   varianti:[{it:'Set di 5',en:'Set of 5',prezzo:12,stripe:''}],
+   dati:{tecnica:{it:'Carta uso mano 350 g, busta in carta',en:'350 gsm uncoated card, paper envelope'},misure:'10,5 × 15 cm'},
+   desc:{it:['Alatri, Albano Laziale, Barcellona, Terracina e Roma: le cinque tappe di Luminis in cinque cartoline.'],en:['Alatri, Albano Laziale, Barcelona, Terracina and Rome: the five Luminis venues on five postcards.']}},
+  {id:'quaderno-semeion', cat:'oggetti', titolo:'Quaderno Semeion',
+   sub:{it:'Copertina nera con lo schema',en:'Black cover with the diagram'},
+   media:{kind:'notebook'},
+   varianti:[{it:'A5, pagine bianche',en:'A5, plain pages',prezzo:18,stripe:''}],
+   dati:{tecnica:{it:'Copertina rigida, stampa a caldo, 160 pagine',en:'Hardcover, hot-foil printed, 160 pages'},misure:'A5'},
+   desc:{it:['Un quaderno per appunti con lo schema della teoria Semeion impresso in copertina.'],en:['A notebook with the Semeion theory diagram stamped on the cover.']}},
+  {id:'piatto-semeion', cat:'oggetti', titolo:'Piatto Semeion',
+   sub:{it:'Porcellana, edizione di 100',en:'Porcelain, edition of 100'},
+   media:{kind:'plate'},
+   varianti:[{it:'Ø 27 cm · ed. 100',en:'Ø 27 cm · ed. 100',prezzo:95,stripe:''}],
+   dati:{tecnica:{it:'Porcellana decorata, firmata e numerata sul retro',en:'Decorated porcelain, signed and numbered on the back'},misure:'Ø 27 cm'},
+   desc:{it:['Un piatto da appendere o da usare, con lo schema della teoria Semeion al centro.'],en:['A plate to hang or to use, with the Semeion theory diagram at its centre.']}},
 
   /* ---------- Libri ---------- */
   {id:'catalogo-dei-vortici', cat:'libri', titolo:'Dei vortici e dei punti',
@@ -372,6 +448,13 @@ function mediaHTML(p,big,variant){
   if(m.kind==='poster') return '<div class="obj poster'+(m.dark?' dark':'')+'"><div class="pimg"><img src="'+IMG+m.file+'.webp" alt="" loading="lazy"></div><div class="ptx"><b>'+p.titolo.replace(/, .*/,'')+'</b><span>Mario Carlo Iusi<br>'+m.place+'</span></div></div>';
   if(m.kind==='logoposter') return '<div class="obj poster dark lumis">'+LOGO+'<div class="ptx"><b>Luminis</b><span>Mario Carlo Iusi<br>Alatri · Albano Laziale · Barcellona<br>Terracina · Roma · 2024–2025</span></div></div>';
   if(m.kind==='tote') return '<div class="obj tote'+(variant&&variant.tote?' '+variant.tote:'')+'">'+LOGO+'</div>';
+  if(m.kind==='lframe') return '<div class="obj lframe"><i></i></div>';
+  if(m.kind==='scarf') return '<div class="obj scarf'+(variant&&variant.scarf?' '+variant.scarf:'')+'"><img src="'+IMG+'teoria-semeion-640.webp" alt="'+alt+'" loading="lazy"></div>';
+  if(m.kind==='puzzle') return '<div class="obj puzzle"><div class="pz"><img src="'+IMG+'b1eeed0c311d-1280.webp" alt="'+alt+'" loading="lazy"></div><div class="lb"><b>Luminis, Roma</b><span>1000</span></div></div>';
+  if(m.kind==='pendant') return '<div class="obj pendant">'+LOGO+'</div>';
+  if(m.kind==='cards') return '<div class="obj cards">'+['2b0c382dbc7d','90efc879f89a','e37a4a7ac2f6'].map(function(h){return '<img src="'+IMG+h+'-640.webp" alt="" loading="lazy">'}).join('')+'</div>';
+  if(m.kind==='notebook') return '<div class="obj notebook"><img src="'+IMG+'teoria-semeion-640.webp" alt="'+alt+'" loading="lazy"></div>';
+  if(m.kind==='plate') return '<div class="obj plate"><img src="'+IMG+'teoria-semeion-640.webp" alt="'+alt+'" loading="lazy"></div>';
   if(m.kind==='book') return '<div class="obj book"><img src="'+IMG+m.file+'.webp" alt="'+alt+'" loading="lazy"></div>';
   return '';
 }
