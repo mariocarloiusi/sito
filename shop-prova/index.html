@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- BOZZA DI PROVA: pagina non collegata al sito (niente link da menu, footer o sitemap) e fuori da Google. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Shop · Mario Carlo Iusi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>try{var l=localStorage.getItem('look');if(l==='dark'||l==='light')document.documentElement.setAttribute('data-look',l)}catch(e){}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}html,body{margin:0}
+:root{
+  --paper:#ffffff; --ink:#0a0a0a; --muted:#6b6b6b; --line:#e4e4e4; --tile:#f3f3f3; --sheet:#ffffff;
+  --f-display:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-title:"Cormorant Garamond","Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-look="light"]){--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}}
+html:root[data-look="dark"]{--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}
+html:root[data-look="light"]{color-scheme:light}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.k{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+em.t,.t{font-family:var(--f-title);font-style:italic;font-weight:500}
+
+/* bozza */
+.draft{background:#f6efe0;color:#5a4a26;font-size:13px;border-bottom:1px solid #eadfc6}
+.draft .wrap{padding-block:9px;display:flex;gap:6px 14px;flex-wrap:wrap;align-items:baseline}
+.draft b{font-weight:600}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.brand{font-family:var(--f-title);font-size:21px;font-weight:500;white-space:nowrap}
+.hdr-r{display:flex;align-items:center;gap:22px;font-size:14px}
+.hdr-r button{background:none;border:0;padding:6px 0;cursor:pointer;opacity:.8}
+.hdr-r button:hover,.hdr-r button[aria-pressed="true"]{opacity:1}
+.lang button[aria-pressed="true"]{text-decoration:underline;text-underline-offset:4px}
+.look{display:inline-flex;align-items:center;gap:8px}
+.look i{width:13px;height:13px;border-radius:50%;border:1px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+
+/* intro */
+.intro{padding-block:56px 32px}
+.intro h1{margin:0 0 14px;font-family:var(--f-title);font-weight:500;font-size:clamp(44px,8vw,88px);line-height:1}
+.intro p{margin:0;max-width:620px;font-size:17px;color:var(--muted)}
+
+/* featured */
+.feat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;padding-block:8px 64px;border-bottom:1px solid var(--line)}
+.feat .media{background:var(--tile);padding:clamp(20px,5vw,56px)}
+.feat .media img{box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px rgba(0,0,0,.12)}
+.feat .media .mat{background:#fff;padding:clamp(10px,2.4vw,26px)}
+.feat h2{margin:8px 0 10px;font-family:var(--f-title);font-style:italic;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.05}
+.feat p{margin:0 0 18px;color:var(--muted);max-width:440px}
+.feat .price{font-size:18px;margin-bottom:22px}
+
+/* filters */
+.filters{position:sticky;top:61px;z-index:4;background:var(--paper);border-bottom:1px solid var(--line)}
+.filters .wrap{display:flex;gap:26px;overflow-x:auto;scrollbar-width:none;padding-block:14px}
+.filters .wrap::-webkit-scrollbar{display:none}
+.filters button{background:none;border:0;padding:4px 0;cursor:pointer;white-space:nowrap;font-size:15px;color:var(--muted);border-bottom:1px solid transparent}
+.filters button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* sections + grid */
+.sec{padding-block:48px 16px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-head h2{margin:0;font-size:22px;font-weight:500}
+.sec-lede{margin:0 0 28px;color:var(--muted);max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 24px}
+.grid.uniche{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{display:block;cursor:pointer;text-align:left;background:none;border:0;padding:0;width:100%}
+.card .media{aspect-ratio:4/5;background:var(--tile);display:flex;align-items:center;justify-content:center;padding:10%;overflow:hidden;transition:background .25s}
+.card:hover .media{background:color-mix(in srgb,var(--tile) 88%,var(--ink))}
+.card .media img,.card .media .obj{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .media img,.card:hover .media .obj{transform:translateY(-4px)}
+.card .meta{padding-top:14px;display:grid;gap:2px}
+.card .ti{font-family:var(--f-title);font-style:italic;font-weight:500;font-size:21px;line-height:1.15}
+.card .sub{font-size:14px;color:var(--muted)}
+.card .pr{font-size:14px;margin-top:4px}
+.card .pr s{color:var(--muted)}
+.uniche .card .media{background:#fff;padding:10%}
+.uniche .card .media img{mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-look="light"]) .uniche .card .media{background:var(--sheet)}}
+html:root[data-look="dark"] .uniche .card .media{background:var(--sheet)}
+
+/* objects: print with mat, poster sheet, book, tote */
+.print{background:#fff;padding:7%;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 22px rgba(0,0,0,.12)}
+.poster{width:100%;aspect-ratio:5/7;background:#fff;color:#0a0a0a;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 22px rgba(0,0,0,.14);display:flex;flex-direction:column;padding:8% 8% 7%}
+.poster .pimg{flex:1;min-height:0;display:flex;align-items:flex-start;justify-content:center}
+.poster .pimg img{max-height:100%;width:auto;object-fit:contain}
+.poster .ptx{padding-top:7%;display:flex;justify-content:space-between;align-items:flex-end;gap:6%}
+.poster .ptx b{font-family:var(--f-title);font-style:italic;font-weight:500;font-size:clamp(14px,2.2vw,26px);line-height:1}
+.poster .ptx span{font-size:clamp(5px,.62vw,8px);line-height:1.35;text-align:right;letter-spacing:.02em}
+.poster.dark{background:#0d0d0e;color:#efece4}
+.poster.lumis{justify-content:space-between}
+.poster.lumis svg{width:44%;margin:12% auto 0;display:block}
+.book{width:78%;aspect-ratio:1;box-shadow:2px 0 0 #ddd inset,0 1px 2px rgba(0,0,0,.08),10px 14px 30px rgba(0,0,0,.16)}
+.book img{width:100%;height:100%;object-fit:cover}
+.tote{position:relative;width:74%;aspect-ratio:.82;margin-top:22%;background:#e8e1d2;border-radius:2px;box-shadow:0 10px 26px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;color:#151515}
+.tote::before,.tote::after{content:"";position:absolute;top:-30%;width:14%;height:42%;border:5px solid #ddd5c4;border-bottom:0;border-radius:40px 40px 0 0}
+.tote::before{left:24%}.tote::after{right:24%}
+.tote svg{width:40%}
+.tote.black{background:#141414;color:#e8e1d2}
+.tote.black::before,.tote.black::after{border-color:#222}
+
+/* info */
+.info{padding-block:72px;border-top:1px solid var(--line);margin-top:48px}
+.info .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.info h3{margin:0 0 8px;font-size:15px;font-weight:600}
+.info p{margin:0;color:var(--muted);font-size:14px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+
+/* product page (overlay) */
+.pp{position:fixed;inset:0;z-index:20;background:var(--paper);overflow-y:auto;display:none}
+.pp.on{display:block}
+body.lock{overflow:hidden}
+.pp .bar{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:2}
+.pp .bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.pp .close{background:none;border:0;cursor:pointer;font-size:15px;padding:6px 0}
+.pp .body{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;padding-block:40px 80px}
+.pp .gal{display:grid;gap:16px}
+.pp .gal .m{background:var(--tile);display:flex;align-items:center;justify-content:center;padding:clamp(24px,7vw,96px);min-height:min(78vh,760px)}
+.pp .gal .m.white{background:#fff}
+.pp .gal .m.white img{mix-blend-mode:multiply}
+.pp .gal .m.flat{padding:0;min-height:0;background:none}
+.pp .gal .m .print,.pp .gal .m .poster{max-width:520px}
+.pp .gal .m .poster{width:min(100%,460px)}
+.pp .gal .m .book{width:min(78%,440px)}
+.pp .gal .m .tote{width:min(70%,380px)}
+.pp .gal .m img.solo{max-height:70vh;width:auto}
+.pp .side{position:sticky;top:96px;align-self:start}
+.pp h1{margin:8px 0 6px;font-family:var(--f-title);font-style:italic;font-weight:500;font-size:clamp(34px,4.4vw,52px);line-height:1.05}
+.pp .lede{color:var(--muted);margin:0 0 24px}
+.pp .price{font-size:22px;margin:0 0 20px}
+.pp .vars{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.pp .vars button{border:1px solid var(--line);background:none;padding:9px 14px;cursor:pointer;font-size:14px}
+.pp .vars button[aria-pressed="true"]{border-color:var(--ink)}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:15px 18px;font-size:15px;font-weight:500;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--paper);margin-bottom:10px}
+.btn.ghost{background:none;color:var(--ink)}
+.btn[aria-disabled="true"]{opacity:.38;cursor:not-allowed}
+.pay-note{font-size:12.5px;color:var(--muted);margin:-2px 0 24px}
+.pp dl{margin:0;border-top:1px solid var(--line)}
+.pp dl div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pp dt{color:var(--muted)}
+.pp dd{margin:0}
+.pp .desc{margin:24px 0 0;font-size:15px}
+.pp .desc p{margin:0 0 12px}
+.avail{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-bottom:18px}
+.avail i{width:7px;height:7px;border-radius:50%;background:#3d8a4f}
+
+@media (max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.uniche{grid-template-columns:repeat(3,minmax(0,1fr))}.info .cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .feat{grid-template-columns:1fr;gap:24px}
+  .grid,.grid.uniche{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}
+  .card .ti{font-size:18px}
+  .pp .body{grid-template-columns:1fr;gap:28px;padding-block:16px 64px}
+  .pp .gal .m{min-height:0;padding:28px}
+  .pp .side{position:static}
+  .filters{top:57px}
+  header .wrap{padding-block:14px}
+  .hdr-r{gap:16px}
+  .info .cols{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="draft"><div class="wrap"><b data-i="draftB">Bozza di prova.</b> <span data-i="draftT">Pagina non collegata al sito e non visibile su Google. Prezzi e tirature indicativi; i pagamenti non sono ancora attivi.</span></div></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">Mario Carlo Iusi</a>
+    <div class="hdr-r">
+      <span class="lang"><button type="button" data-l="it">IT</button> / <button type="button" data-l="en">EN</button></span>
+      <button type="button" class="look" id="lookBtn"><i aria-hidden="true"></i><span id="lookTxt">Scuro</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap intro">
+    <h1>Shop</h1>
+    <p data-i="intro">Edizioni, stampe e oggetti nati dal lavoro di Mario Carlo Iusi. Ogni stampa è firmata, numerata e accompagnata da un certificato di autenticità.</p>
+  </div>
+
+  <div class="wrap"><div class="feat" id="feat"></div></div>
+
+  <nav class="filters" aria-label="Categorie"><div class="wrap" id="filters"></div></nav>
+
+  <div class="wrap" id="sections"></div>
+
+  <div class="wrap info" id="info">
+    <div class="cols">
+      <div><h3 data-i="i1h">Spedizioni</h3><p data-i="i1">Spediamo in Italia, in Europa e nel resto del mondo. Le stampe viaggiano piane o arrotolate in tubo rigido, assicurate.</p></div>
+      <div><h3 data-i="i2h">Certificato</h3><p data-i="i2">Stampe ed edizioni sono firmate e numerate a mano dall'artista e accompagnate da un certificato di autenticità.</p></div>
+      <div><h3 data-i="i3h">Resi</h3><p data-i="i3">Hai 14 giorni dalla consegna per restituire un oggetto integro. Scrivici e ti diamo le istruzioni.</p></div>
+      <div><h3 data-i="i4h">Domande</h3><p><span data-i="i4">Per tirature, cornici o spedizioni speciali:</span> <a href="mailto:info@mariocarloiusi.com" style="text-decoration:underline;text-underline-offset:3px">info@mariocarloiusi.com</a></p></div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Mario Carlo Iusi</span><a href="/" data-i="back">Torna al sito</a></div></footer>
+
+<div class="pp" id="pp" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+  <div class="bar"><div class="wrap"><span class="brand">Shop</span><button type="button" class="close" id="ppClose" data-i="close">Chiudi ✕</button></div></div>
+  <div class="wrap body" id="ppBody"></div>
+</div>
+
+<script>
+/* ==========================================================================
+   CATALOGO. Per cambiare un prezzo basta modificare "prezzo" (in euro).
+   stripe: incollare qui il Payment Link di Stripe quando l'account esiste
+   (es. "https://buy.stripe.com/..."); finché è vuoto il pulsante resta spento
+   e si ordina via email.
+   ========================================================================== */
+var IMG='../img/';
+var LOGO='<svg viewBox="0 0 787 787" fill="none" stroke="currentColor" stroke-width="38" aria-hidden="true" focusable="false"><path d="M394 0V787M0 394H787M117 117L670 670M117 670L394 394M509 0V278H787"/><path d="M360 326H394V394H322V356ZM326 394H462L470 444L456 458H332L318 444Z" fill="currentColor" stroke="none"/></svg>';
+
+var CAT=[
+  {id:'edizioni', it:'Stampe ed edizioni', en:'Prints and editions',
+   lede:{it:'Fotografie fine art delle tappe di Luminis e un multiplo dalla teoria Semeion. Tirature limitate, firmate e numerate.',
+         en:'Fine art photographs of the Luminis venues and a multiple from the Semeion theory. Limited, signed and numbered editions.'}},
+  {id:'uniche', it:'Opere uniche', en:'Unique works',
+   lede:{it:'Piccoli pezzi unici dalla serie Impostori: vernice su vetroresina, 29 × 21 cm. Ognuno esiste in un solo esemplare.',
+         en:'Small unique pieces from the Impostori series: paint on fibreglass, 29 × 21 cm. Each one exists only once.'}},
+  {id:'oggetti', it:'Poster e oggetti', en:'Posters and objects',
+   lede:{it:'Poster delle mostre e oggetti con il segno di Luminis.', en:'Exhibition posters and objects bearing the Luminis sign.'}},
+  {id:'libri', it:'Libri', en:'Books',
+   lede:{it:'Cataloghi delle mostre.', en:'Exhibition catalogues.'}}
+];
+
+function printMedia(src,w,h){return {kind:'print',src:src,w:w,h:h}}
+
+var P=[
+  /* ---------- Stampe ed edizioni ---------- */
+  {id:'luminis-roma', cat:'edizioni', titolo:'Luminis V, Roma', feat:true,
+   sub:{it:'Stampa fine art, edizione di 30',en:'Fine art print, edition of 30'},
+   media:printMedia('b1eeed0c311d',2000,1334), extra:['b1eeed0c311d-2000'],
+   varianti:[{it:'40 × 60 cm · ed. 30',en:'40 × 60 cm · ed. 30',prezzo:180,stripe:''},{it:'70 × 105 cm · ed. 10',en:'70 × 105 cm · ed. 10',prezzo:350,stripe:''}],
+   dati:{tecnica:{it:'Stampa giclée a pigmenti su carta cotone Hahnemühle Photo Rag 308 g',en:'Pigment giclée print on Hahnemühle Photo Rag 308 gsm cotton paper'},anno:'2025',firma:{it:'Firmata e numerata a mano sul retro, con certificato',en:'Hand signed and numbered on the back, with certificate'}},
+   desc:{it:['Le cornici di luce sul muraglione del Lungotevere, a Piazza Tevere, con la cupola di San Pietro sullo sfondo. Quinta tappa di Luminis, settembre–ottobre 2025.'],
+         en:['The frames of light on the Lungotevere embankment at Piazza Tevere, with the dome of St Peter\'s in the distance. Fifth venue of Luminis, September–October 2025.']}},
+  {id:'luminis-alatri', cat:'edizioni', titolo:'Luminis I, Alatri',
+   sub:{it:'Stampa fine art, edizione di 30',en:'Fine art print, edition of 30'},
+   media:printMedia('2b0c382dbc7d',1280,853),
+   varianti:[{it:'40 × 60 cm · ed. 30',en:'40 × 60 cm · ed. 30',prezzo:150,stripe:''}],
+   dati:{tecnica:{it:'Stampa giclée a pigmenti su carta cotone',en:'Pigment giclée print on cotton paper'},anno:'2024',firma:{it:'Firmata e numerata, con certificato',en:'Signed and numbered, with certificate'}},
+   desc:{it:['Una cornice di luce sulle Mura Poligonali dell\'Acropoli di Alatri. Prima tappa di Luminis, 2024.'],en:['A frame of light on the Polygonal Walls of the Acropolis of Alatri. First venue of Luminis, 2024.']}},
+  {id:'luminis-albano', cat:'edizioni', titolo:'Luminis II, Albano',
+   sub:{it:'Stampa fine art, edizione di 30',en:'Fine art print, edition of 30'},
+   media:printMedia('90efc879f89a',1280,853),
+   varianti:[{it:'40 × 60 cm · ed. 30',en:'40 × 60 cm · ed. 30',prezzo:150,stripe:''}],
+   dati:{tecnica:{it:'Stampa giclée a pigmenti su carta cotone',en:'Pigment giclée print on cotton paper'},anno:'2024',firma:{it:'Firmata e numerata, con certificato',en:'Signed and numbered, with certificate'}},
+   desc:{it:['Nei Cisternoni di Albalonga ad Albano Laziale. Seconda tappa di Luminis, 2024.'],en:['Inside the Cisternoni of Albalonga, Albano Laziale. Second venue of Luminis, 2024.']}},
+  {id:'luminis-barcellona', cat:'edizioni', titolo:'Luminis III, Barcellona',
+   sub:{it:'Stampa fine art, edizione di 30',en:'Fine art print, edition of 30'},
+   media:printMedia('e37a4a7ac2f6',1280,856),
+   varianti:[{it:'40 × 60 cm · ed. 30',en:'40 × 60 cm · ed. 30',prezzo:150,stripe:''}],
+   dati:{tecnica:{it:'Stampa giclée a pigmenti su carta cotone',en:'Pigment giclée print on cotton paper'},anno:'2024',firma:{it:'Firmata e numerata, con certificato',en:'Signed and numbered, with certificate'}},
+   desc:{it:['Tra i muri del Barrio Gótico di Barcellona. Terza tappa di Luminis, dicembre 2024.'],en:['Among the walls of the Barrio Gótico in Barcelona. Third venue of Luminis, December 2024.']}},
+  {id:'luminis-terracina', cat:'edizioni', titolo:'Luminis IV, Terracina',
+   sub:{it:'Stampa fine art, edizione di 30',en:'Fine art print, edition of 30'},
+   media:printMedia('c1efd7e2225b',960,1280),
+   varianti:[{it:'40 × 30 cm · ed. 30',en:'40 × 30 cm · ed. 30',prezzo:120,stripe:''}],
+   dati:{tecnica:{it:'Stampa giclée a pigmenti su carta cotone',en:'Pigment giclée print on cotton paper'},anno:'2025',firma:{it:'Firmata e numerata, con certificato',en:'Signed and numbered, with certificate'}},
+   desc:{it:['L\'Oratorio dell\'Angeletto, sotto il Tempio di Giove Anxur a Terracina. Quarta tappa di Luminis, estate 2025.'],en:['The Oratorio dell\'Angeletto beneath the Temple of Jupiter Anxur, Terracina. Fourth venue of Luminis, summer 2025.']}},
+  {id:'teoria-semeion', cat:'edizioni', titolo:'Teoria Semeion',
+   sub:{it:'Serigrafia, edizione di 30',en:'Screenprint, edition of 30'},
+   media:{kind:'print',src:'teoria-semeion',file:'teoria-semeion-1224',w:1224,h:1498},
+   varianti:[{it:'50 × 70 cm · ed. 30',en:'50 × 70 cm · ed. 30',prezzo:250,stripe:''}],
+   dati:{tecnica:{it:'Serigrafia a un colore su carta Fabriano Rosaspina 285 g',en:'One-colour screenprint on Fabriano Rosaspina 285 gsm paper'},anno:'2026',firma:{it:'Firmata e numerata a matita, con certificato',en:'Signed and numbered in pencil, with certificate'}},
+   desc:{it:['Lo schema della teoria Semeion, disegnato dall\'artista, tradotto in un multiplo serigrafico. È il fondamento da cui nascono Luminis e le serie degli ultimi anni.'],
+         en:['The diagram of the Semeion theory, drawn by the artist, translated into a screenprinted multiple. It is the foundation from which Luminis and the recent series grew.']}},
+
+  /* ---------- Opere uniche (Impostori D) ---------- */
+].concat(['72cf7d2e3c6e','5d06adc70433','7bb9abeb9c12','694ed3c59327','59140cdf1977','19f018394194','0930fefb3fa7','d6ead0d89d0d','427e11c61a36'].map(function(h,i){
+  return {id:'impostore-d'+(i+1), cat:'uniche', titolo:'Impostore D'+(i+1), unica:true,
+    sub:{it:'Pezzo unico',en:'Unique work'},
+    media:{kind:'img',src:h,w:720,h:1280},
+    varianti:[{it:'29 × 21 cm',en:'29 × 21 cm',prezzo:[450,450,500,450,500,450,450,500,450][i],stripe:''}],
+    dati:{tecnica:{it:'Vernice su vetroresina',en:'Paint on fibreglass'},anno:'2025',firma:{it:'Firmata sul retro, con certificato',en:'Signed on the back, with certificate'}},
+    desc:{it:['Dalla serie Impostori (D). Ogni pezzo è modellato e dipinto a mano ed esiste in un solo esemplare.'],en:['From the Impostori (D) series. Each piece is shaped and painted by hand and exists only once.']}};
+})).concat([
+
+  /* ---------- Poster e oggetti ---------- */
+  {id:'poster-exitus', cat:'oggetti', titolo:'Exitus',
+   sub:{it:'Poster della mostra, 50 × 70 cm',en:'Exhibition poster, 50 × 70 cm'},
+   media:{kind:'poster',src:'44e778746094',file:'44e778746094',dark:true,place:'Palazzo Doria Pamphilj<br>Appartamenti Segreti<br>21.10 – 13.12.2026'},
+   varianti:[{it:'50 × 70 cm',en:'50 × 70 cm',prezzo:35,stripe:''}],
+   dati:{tecnica:{it:'Stampa offset su carta patinata opaca 200 g',en:'Offset print on 200 gsm matt coated paper'},anno:'2026'},
+   desc:{it:['Il poster della mostra Exitus negli Appartamenti Segreti di Palazzo Doria Pamphilj, Roma. Spedito arrotolato in tubo.'],en:['The poster of the Exitus exhibition in the Secret Apartments of Palazzo Doria Pamphilj, Rome. Shipped rolled in a tube.']}},
+  {id:'poster-luminis-roma', cat:'oggetti', titolo:'Luminis, Roma',
+   sub:{it:'Poster della tappa, 50 × 70 cm',en:'Venue poster, 50 × 70 cm'},
+   media:{kind:'poster',src:'eeff844daf9f',file:'eeff844daf9f-1280',dark:true,place:'Piazza Tevere<br>Lungotevere, Roma<br>20.09 – 12.10.2025'},
+   varianti:[{it:'50 × 70 cm',en:'50 × 70 cm',prezzo:30,stripe:''}],
+   dati:{tecnica:{it:'Stampa offset su carta patinata opaca 200 g',en:'Offset print on 200 gsm matt coated paper'},anno:'2025'},
+   desc:{it:['Il poster della quinta tappa di Luminis sul Lungotevere. Spedito arrotolato in tubo.'],en:['The poster of the fifth Luminis venue on the Lungotevere. Shipped rolled in a tube.']}},
+  {id:'poster-luminis', cat:'oggetti', titolo:'Luminis 2024–2025',
+   sub:{it:'Poster con le cinque tappe, 50 × 70 cm',en:'Poster with the five venues, 50 × 70 cm'},
+   media:{kind:'logoposter'},
+   varianti:[{it:'50 × 70 cm',en:'50 × 70 cm',prezzo:30,stripe:''}],
+   dati:{tecnica:{it:'Stampa offset su carta patinata opaca 200 g',en:'Offset print on 200 gsm matt coated paper'},anno:'2025'},
+   desc:{it:['Il pittogramma di Luminis e le cinque tappe del progetto: Alatri, Albano Laziale, Barcellona, Terracina, Roma.'],en:['The Luminis pictogram and the five venues of the project: Alatri, Albano Laziale, Barcelona, Terracina, Rome.']}},
+  {id:'shopper-luminis', cat:'oggetti', titolo:'Shopper Luminis',
+   sub:{it:'Cotone biologico, serigrafata',en:'Organic cotton, screenprinted'},
+   media:{kind:'tote'},
+   varianti:[{it:'Naturale',en:'Natural',prezzo:25,stripe:'',tote:''},{it:'Nera',en:'Black',prezzo:25,stripe:'',tote:'black'}],
+   dati:{tecnica:{it:'Cotone biologico 280 g, serigrafia a un colore',en:'280 gsm organic cotton, one-colour screenprint'},misure:'38 × 42 cm'},
+   desc:{it:['Una borsa robusta con il pittogramma di Luminis, il segno che ha accompagnato le cinque tappe del progetto.'],en:['A sturdy bag with the Luminis pictogram, the sign that accompanied the five venues of the project.']}},
+
+  /* ---------- Libri ---------- */
+  {id:'catalogo-dei-vortici', cat:'libri', titolo:'Dei vortici e dei punti',
+   sub:{it:'Catalogo della mostra, 2019',en:'Exhibition catalogue, 2019'},
+   media:{kind:'book',file:'shop/catalogo-copertina'}, extra:['shop/catalogo-interno'],
+   varianti:[{it:'Copia singola',en:'Single copy',prezzo:30,stripe:''},{it:'Copia firmata',en:'Signed copy',prezzo:40,stripe:''}],
+   dati:{misure:'21 × 21 cm',lingua:{it:'Italiano',en:'Italian'}},
+   desc:{it:['Il catalogo della prima personale alla Nuvola, maggio 2019: le opere della serie, i testi critici e le immagini dello studio.'],en:['The catalogue of the first solo show at the Nuvola, May 2019: the works of the series, critical essays and studio images.']}}
+]);
+
+/* ---------------- testi interfaccia ---------------- */
+var T={
+ it:{draftB:'Bozza di prova.',draftT:'Pagina non collegata al sito e non visibile su Google. Prezzi e tirature indicativi; i pagamenti non sono ancora attivi.',
+   intro:'Edizioni, stampe e oggetti nati dal lavoro di Mario Carlo Iusi. Ogni stampa è firmata, numerata e accompagnata da un certificato di autenticità.',
+   all:'Tutto',buy:'Acquista',email:'Ordina via email',ask:'Richiedi questa opera',view:'Scopri',
+   payOff:'Pagamento con carta in arrivo. Per ora si ordina via email: rispondiamo entro un giorno con totale e spedizione.',
+   payUnique:'Ti scriviamo entro un giorno per confermare disponibilità, spedizione e pagamento.',
+   from:'da',close:'Chiudi ✕',back:'Torna al sito',avail:'Disponibile',
+   i1h:'Spedizioni',i1:'Spediamo in Italia, in Europa e nel resto del mondo. Le stampe viaggiano piane o arrotolate in tubo rigido, assicurate.',
+   i2h:'Certificato',i2:'Stampe ed edizioni sono firmate e numerate a mano dall\'artista e accompagnate da un certificato di autenticità.',
+   i3h:'Resi',i3:'Hai 14 giorni dalla consegna per restituire un oggetto integro. Scrivici e ti diamo le istruzioni.',
+   i4h:'Domande',i4:'Per tirature, cornici o spedizioni speciali:',
+   d:{tecnica:'Tecnica',anno:'Anno',firma:'Firma',misure:'Misure',pagine:'Pagine',lingua:'Lingua',formato:'Formato'},
+   look:['Scuro','Chiaro'],
+   mailSub:'Ordine dallo Shop: ',mailBody:'Buongiorno,\n\nvorrei ordinare:\n{x}\nPrezzo indicato: € {p}\n\nNome e cognome:\nIndirizzo di spedizione:\nTelefono:\n\nGrazie'},
+ en:{draftB:'Draft.',draftT:'This page is not linked from the site and hidden from Google. Prices and editions are indicative; payments are not live yet.',
+   intro:'Editions, prints and objects born from the work of Mario Carlo Iusi. Every print is signed, numbered and comes with a certificate of authenticity.',
+   all:'All',buy:'Buy',email:'Order by email',ask:'Enquire about this work',view:'View',
+   payOff:'Card payment coming soon. For now orders are taken by email: we reply within a day with the total and shipping.',
+   payUnique:'We will write back within a day to confirm availability, shipping and payment.',
+   from:'from',close:'Close ✕',back:'Back to the site',avail:'Available',
+   i1h:'Shipping',i1:'We ship within Italy, Europe and worldwide. Prints travel flat or rolled in a rigid tube, insured.',
+   i2h:'Certificate',i2:'Prints and editions are hand signed and numbered by the artist and come with a certificate of authenticity.',
+   i3h:'Returns',i3:'You have 14 days from delivery to return an item in its original condition. Write to us for instructions.',
+   i4h:'Questions',i4:'For editions, framing or special shipping:',
+   d:{tecnica:'Medium',anno:'Year',firma:'Signature',misure:'Size',pagine:'Pages',lingua:'Language',formato:'Format'},
+   look:['Dark','Light'],
+   mailSub:'Shop order: ',mailBody:'Hello,\n\nI would like to order:\n{x}\nListed price: € {p}\n\nFull name:\nShipping address:\nPhone:\n\nThank you'}
+};
+
+var lang='it';try{if(localStorage.getItem('lang')==='en')lang='en'}catch(e){}
+var filt='all';
+function L(o){return o&&typeof o==='object'?(o[lang]||o.it):o}
+function eur(n){return '€ '+n.toLocaleString('it-IT')}
+function priceOf(p){var ps=p.varianti.map(function(v){return v.prezzo});var mn=Math.min.apply(null,ps);return (ps.length>1&&Math.max.apply(null,ps)!==mn?T[lang].from+' ':'')+eur(mn)}
+function srcset(base){return IMG+base+'-640.webp 640w, '+IMG+base+'-1280.webp 1280w'}
+
+function mediaHTML(p,big,variant){
+  var m=p.media, alt=p.titolo;
+  if(m.kind==='print'){
+    var im=m.file?'<img src="'+IMG+m.file+'.webp" alt="'+alt+'" loading="lazy">':'<img src="'+IMG+m.src+'-1280.webp" srcset="'+srcset(m.src)+'" sizes="'+(big?'60vw':'25vw')+'" alt="'+alt+'" loading="lazy" width="'+m.w+'" height="'+m.h+'">';
+    return '<div class="print">'+im+'</div>';
+  }
+  if(m.kind==='img') return '<img src="'+IMG+m.src+'-1280.webp" srcset="'+srcset(m.src)+'" sizes="'+(big?'50vw':'20vw')+'" alt="'+alt+'" loading="lazy"'+(big?' class="solo"':'')+'>';
+  if(m.kind==='poster') return '<div class="obj poster'+(m.dark?' dark':'')+'"><div class="pimg"><img src="'+IMG+m.file+'.webp" alt="" loading="lazy"></div><div class="ptx"><b>'+p.titolo.replace(/, .*/,'')+'</b><span>Mario Carlo Iusi<br>'+m.place+'</span></div></div>';
+  if(m.kind==='logoposter') return '<div class="obj poster dark lumis">'+LOGO+'<div class="ptx"><b>Luminis</b><span>Mario Carlo Iusi<br>Alatri · Albano Laziale · Barcellona<br>Terracina · Roma · 2024–2025</span></div></div>';
+  if(m.kind==='tote') return '<div class="obj tote'+(variant&&variant.tote?' '+variant.tote:'')+'">'+LOGO+'</div>';
+  if(m.kind==='book') return '<div class="obj book"><img src="'+IMG+m.file+'.webp" alt="'+alt+'" loading="lazy"></div>';
+  return '';
+}
+
+function card(p){
+  return '<a class="card" href="#'+p.id+'"><div class="media">'+mediaHTML(p,false)+'</div><div class="meta"><span class="ti">'+p.titolo+'</span><span class="sub">'+L(p.sub)+'</span><span class="pr">'+priceOf(p)+'</span></div></a>';
+}
+
+function render(){
+  var t=T[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(t[k])e.textContent=t[k]});
+  document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===lang)});
+  // featured
+  var f=P.filter(function(p){return p.feat})[0];
+  document.getElementById('feat').innerHTML='<a class="media" href="#'+f.id+'"><div class="mat"><img src="'+IMG+f.media.src+'-1280.webp" srcset="'+srcset(f.media.src)+', '+IMG+f.media.src+'-2000.webp 2000w" sizes="(max-width:760px) 100vw, 60vw" alt="'+f.titolo+'"></div></a>'
+   +'<div><span class="k">'+L(CAT[0])+'</span><h2>'+f.titolo+'</h2><p>'+L(f.desc)[0]+'</p><div class="price">'+priceOf(f)+'</div><a class="btn ghost" href="#'+f.id+'" style="width:auto;display:inline-flex;padding-inline:28px">'+t.view+'</a></div>';
+  // filters
+  var fl='<button type="button" data-f="all" aria-pressed="'+(filt==='all')+'">'+t.all+'</button>'+CAT.map(function(c){return '<button type="button" data-f="'+c.id+'" aria-pressed="'+(filt===c.id)+'">'+L(c)+'</button>'}).join('');
+  document.getElementById('filters').innerHTML=fl;
+  // sections
+  document.getElementById('sections').innerHTML=CAT.filter(function(c){return filt==='all'||filt===c.id}).map(function(c){
+    var ps=P.filter(function(p){return p.cat===c.id});
+    return '<section class="sec" id="sec-'+c.id+'"><div class="sec-head"><h2>'+L(c)+'</h2><span class="k">'+ps.length+'</span></div><p class="sec-lede">'+L(c.lede)+'</p><div class="grid'+(c.id==='uniche'?' uniche':'')+'">'+ps.map(card).join('')+'</div></section>';
+  }).join('');
+  var lb=document.getElementById('lookTxt');lb.textContent=isDark()?t.look[1]:t.look[0];
+  route();
+}
+
+function mailto(p,v){
+  var t=T[lang], x=p.titolo+' · '+L(v)+(p.unica?'':' · 1 pz');
+  return 'mailto:info@mariocarloiusi.com?subject='+encodeURIComponent(t.mailSub+p.titolo)+'&body='+encodeURIComponent(t.mailBody.replace('{x}',x).replace('{p}',v.prezzo));
+}
+
+var cur=null, vi=0;
+function openP(p){
+  var t=T[lang], v=p.varianti[vi]||p.varianti[0];
+  var gal='<div class="m'+(p.media.kind==='img'?' white':'')+'">'+mediaHTML(p,true,v)+'</div>';
+  (p.extra||[]).forEach(function(e){gal+='<div class="m flat"><img src="'+IMG+e+'.webp" alt="'+p.titolo+'" loading="lazy"></div>'});
+  var rows='';
+  var dk=['tecnica','misure','pagine','lingua','anno','firma'];
+  if(p.varianti.length===1&&!p.dati.misure) rows+='<div><dt>'+t.d.formato+'</dt><dd>'+L(v)+'</dd></div>';
+  dk.forEach(function(k){if(p.dati[k])rows+='<div><dt>'+t.d[k]+'</dt><dd>'+L(p.dati[k])+'</dd></div>'});
+  var vars=p.varianti.length>1?'<div class="vars">'+p.varianti.map(function(x,i){return '<button type="button" data-v="'+i+'" aria-pressed="'+(i===vi)+'">'+L(x)+'</button>'}).join('')+'</div>':'';
+  var buy;
+  if(p.unica){
+    buy='<div class="avail"><i></i>'+t.avail+'</div><a class="btn" href="'+mailto(p,v)+'">'+t.ask+'</a><p class="pay-note">'+t.payUnique+'</p>';
+  }else{
+    buy=(v.stripe?'<a class="btn" href="'+v.stripe+'" target="_blank" rel="noopener">'+t.buy+'</a>':'<span class="btn" aria-disabled="true" role="link">'+t.buy+'</span>')
+      +'<a class="btn ghost" href="'+mailto(p,v)+'">'+t.email+'</a>'+(v.stripe?'':'<p class="pay-note">'+t.payOff+'</p>');
+  }
+  document.getElementById('ppBody').innerHTML='<div class="gal">'+gal+'</div><div class="side"><span class="k">'+L(CAT.filter(function(c){return c.id===p.cat})[0])+'</span><h1 id="ppTitle">'+p.titolo+'</h1><p class="lede">'+L(p.sub)+'</p>'
+    +vars+'<div class="price">'+eur(v.prezzo)+'</div>'+buy+'<dl>'+rows+'</dl><div class="desc">'+L(p.desc).map(function(s){return '<p>'+s+'</p>'}).join('')+'</div></div>';
+  var pp=document.getElementById('pp');
+  if(!pp.classList.contains('on')){pp.classList.add('on');document.body.classList.add('lock');pp.scrollTop=0}
+  document.title=p.titolo+' · Shop · Mario Carlo Iusi';
+}
+function closeP(){var pp=document.getElementById('pp');pp.classList.remove('on');document.body.classList.remove('lock');document.title='Shop · Mario Carlo Iusi'}
+function route(){
+  var id=location.hash.slice(1), p=P.filter(function(x){return x.id===id})[0];
+  if(p){if(cur!==p){vi=0;cur=p}openP(p)}else{cur=null;closeP()}
+}
+window.addEventListener('hashchange',route);
+document.getElementById('ppClose').addEventListener('click',function(){history.length>1&&cur?history.back():(location.hash='');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)document.getElementById('ppClose').click()});
+document.getElementById('ppBody').addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(b){vi=+b.dataset.v;openP(cur)}});
+document.getElementById('filters').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;render();var s=document.getElementById('filters');if(s.getBoundingClientRect().top>70)return;window.scrollTo({top:s.offsetTop-61})});
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(e){}render()})});
+
+function isDark(){var a=document.documentElement.getAttribute('data-look');if(a)return a==='dark';return matchMedia('(prefers-color-scheme: dark)').matches}
+document.getElementById('lookBtn').addEventListener('click',function(){var n=isDark()?'light':'dark';document.documentElement.setAttribute('data-look',n);try{localStorage.setItem('look',n)}catch(e){}render()});
+
+render();
+</script>
+</body>
+</html>
