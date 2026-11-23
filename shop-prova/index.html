@@ -18,8 +18,10 @@
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
 }
-html:root[data-look="dark"]{--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}
-html:root[data-look="light"]{color-scheme:light}
+/* tema: chiaro di default; scuro solo con la classe "scuro" su <html> (pulsante) */
+html:root,html:root[data-theme]{--paper:#ffffff;--ink:#0a0a0a;--muted:#6b6b6b;--line:#e4e4e4;--tile:#ffffff;--sheet:#ffffff;color-scheme:light}
+html.scuro:root,html.scuro:root[data-theme]{--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}
+html,body{background:var(--paper);color:var(--ink)}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
@@ -85,7 +87,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .card .pr s{color:var(--muted)}
 .uniche .card .media{background:#fff;padding:10%}
 .uniche .card .media img{mix-blend-mode:multiply}
-html:root[data-look="dark"] .uniche .card .media{background:var(--sheet)}
+html.scuro .uniche .card .media{background:var(--sheet)}
 
 /* objects: print with mat, poster sheet, book, tote */
 .print{background:#fff;padding:7%;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 22px rgba(0,0,0,.12)}
@@ -178,6 +180,7 @@ body.lock{overflow:hidden}
     <a class="brand" href="/">Mario Carlo Iusi</a>
     <div class="hdr-r">
       <span class="lang"><button type="button" data-l="it">IT</button> / <button type="button" data-l="en">EN</button></span>
+      <button type="button" class="look" id="lookBtn"><i aria-hidden="true"></i><span id="lookTxt">Scuro</span></button>
     </div>
   </div>
 </header>
@@ -394,6 +397,7 @@ function render(){
     var ps=P.filter(function(p){return p.cat===c.id});
     return '<section class="sec" id="sec-'+c.id+'"><div class="sec-head"><h2>'+L(c)+'</h2><span class="k">'+ps.length+'</span></div><p class="sec-lede">'+L(c.lede)+'</p><div class="grid'+(c.id==='uniche'?' uniche':'')+'">'+ps.map(card).join('')+'</div></section>';
   }).join('');
+  document.getElementById('lookTxt').textContent=T[lang].look[isDark()?1:0];
   route();
 }
 
@@ -437,7 +441,9 @@ document.getElementById('ppBody').addEventListener('click',function(e){var b=e.t
 document.getElementById('filters').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;render();var s=document.getElementById('filters');if(s.getBoundingClientRect().top>70)return;window.scrollTo({top:s.offsetTop-61})});
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(e){}render()})});
 
-function isDark(){var a=document.documentElement.getAttribute('data-look');return a==='dark'}
+function isDark(){return document.documentElement.classList.contains('scuro')}
+try{if(localStorage.getItem('shopLook')==='dark')document.documentElement.classList.add('scuro')}catch(e){}
+document.getElementById('lookBtn').addEventListener('click',function(){var d=!isDark();document.documentElement.classList.toggle('scuro',d);try{localStorage.setItem('shopLook',d?'dark':'light')}catch(e){}document.getElementById('lookTxt').textContent=T[lang].look[d?1:0]});
 
 
 render();
