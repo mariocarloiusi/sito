@@ -13,13 +13,12 @@
 <style>
 *,*::before,*::after{box-sizing:border-box}html,body{margin:0}
 :root{
-  --paper:#ffffff; --ink:#0a0a0a; --muted:#6b6b6b; --line:#e4e4e4; --tile:#f3f3f3; --sheet:#ffffff;
+  --paper:#ffffff; --ink:#0a0a0a; --muted:#6b6b6b; --line:#e4e4e4; --tile:#ffffff; --sheet:#ffffff;
   --f-display:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
   --f-title:"Cormorant Garamond","Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
 }
-@media (prefers-color-scheme:dark){:root:not([data-look="light"]){--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}}
 html:root[data-look="dark"]{--paper:#0c0c0d;--ink:#eeede8;--muted:#9a9992;--line:#262624;--tile:#181817;--sheet:#f4f2ec;color-scheme:dark}
 html:root[data-look="light"]{color-scheme:light}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -55,7 +54,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 /* featured */
 .feat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;padding-block:8px 64px;border-bottom:1px solid var(--line)}
 .feat .media{background:var(--tile);padding:clamp(20px,5vw,56px)}
-.feat .media img{box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px rgba(0,0,0,.12)}
+.feat .media .mat{box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px rgba(0,0,0,.12)}
 .feat .media .mat{background:#fff;padding:clamp(10px,2.4vw,26px)}
 .feat h2{margin:8px 0 10px;font-family:var(--f-title);font-style:italic;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.05}
 .feat p{margin:0 0 18px;color:var(--muted);max-width:440px}
@@ -77,7 +76,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .grid.uniche{grid-template-columns:repeat(5,minmax(0,1fr))}
 .card{display:block;cursor:pointer;text-align:left;background:none;border:0;padding:0;width:100%}
 .card .media{aspect-ratio:4/5;background:var(--tile);display:flex;align-items:center;justify-content:center;padding:10%;overflow:hidden;transition:background .25s}
-.card:hover .media{background:color-mix(in srgb,var(--tile) 88%,var(--ink))}
+.card:hover .media{background:var(--tile)}
 .card .media img,.card .media .obj{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .card:hover .media img,.card:hover .media .obj{transform:translateY(-4px)}
 .card .meta{padding-top:14px;display:grid;gap:2px}
@@ -87,7 +86,6 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .card .pr s{color:var(--muted)}
 .uniche .card .media{background:#fff;padding:10%}
 .uniche .card .media img{mix-blend-mode:multiply}
-@media (prefers-color-scheme:dark){:root:not([data-look="light"]) .uniche .card .media{background:var(--sheet)}}
 html:root[data-look="dark"] .uniche .card .media{background:var(--sheet)}
 
 /* objects: print with mat, poster sheet, book, tote */
@@ -442,7 +440,7 @@ document.getElementById('ppBody').addEventListener('click',function(e){var b=e.t
 document.getElementById('filters').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;render();var s=document.getElementById('filters');if(s.getBoundingClientRect().top>70)return;window.scrollTo({top:s.offsetTop-61})});
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(e){}render()})});
 
-function isDark(){var a=document.documentElement.getAttribute('data-look');if(a)return a==='dark';return matchMedia('(prefers-color-scheme: dark)').matches}
+function isDark(){var a=document.documentElement.getAttribute('data-look');return a==='dark'}
 document.getElementById('lookBtn').addEventListener('click',function(){var n=isDark()?'light':'dark';document.documentElement.setAttribute('data-look',n);try{localStorage.setItem('look',n)}catch(e){}render()});
 
 render();
