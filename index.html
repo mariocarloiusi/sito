@@ -243,5 +243,10 @@ a.addEventListener('mouseenter',function(){show(k,a);});a.addEventListener('focu
 ol.addEventListener('mouseleave',function(){show(null);});
 })();
 </script>
+<script>
+(function(){var last;function hit(){if(!window.goatcounter||!goatcounter.count)return;if(/^(localhost|127\.)/.test(location.hostname))return;var p='/'+location.hash;if(p===last)return;last=p;goatcounter.count({path:p,title:document.title})}
+window.gcHit=hit;addEventListener('hashchange',hit)})();
+</script>
+<script data-goatcounter="https://mariocarloiusi.goatcounter.com/count" data-goatcounter-settings='{"no_onload":true}' async src="https://gc.zgo.at/count.js" onload="gcHit()"></script>
 </body>
 </html>
