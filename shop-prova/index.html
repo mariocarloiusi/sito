@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<script>try{var l=localStorage.getItem('look');if(l==='dark'||l==='light')document.documentElement.setAttribute('data-look',l)}catch(e){}</script>
 <style>
 *,*::before,*::after{box-sizing:border-box}html,body{margin:0}
 :root{
@@ -179,7 +178,6 @@ body.lock{overflow:hidden}
     <a class="brand" href="/">Mario Carlo Iusi</a>
     <div class="hdr-r">
       <span class="lang"><button type="button" data-l="it">IT</button> / <button type="button" data-l="en">EN</button></span>
-      <button type="button" class="look" id="lookBtn"><i aria-hidden="true"></i><span id="lookTxt">Scuro</span></button>
     </div>
   </div>
 </header>
@@ -396,7 +394,6 @@ function render(){
     var ps=P.filter(function(p){return p.cat===c.id});
     return '<section class="sec" id="sec-'+c.id+'"><div class="sec-head"><h2>'+L(c)+'</h2><span class="k">'+ps.length+'</span></div><p class="sec-lede">'+L(c.lede)+'</p><div class="grid'+(c.id==='uniche'?' uniche':'')+'">'+ps.map(card).join('')+'</div></section>';
   }).join('');
-  var lb=document.getElementById('lookTxt');lb.textContent=isDark()?t.look[1]:t.look[0];
   route();
 }
 
@@ -441,7 +438,7 @@ document.getElementById('filters').addEventListener('click',function(e){var b=e.
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(e){}render()})});
 
 function isDark(){var a=document.documentElement.getAttribute('data-look');return a==='dark'}
-document.getElementById('lookBtn').addEventListener('click',function(){var n=isDark()?'light':'dark';document.documentElement.setAttribute('data-look',n);try{localStorage.setItem('look',n)}catch(e){}render()});
+
 
 render();
 </script>
