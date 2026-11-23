@@ -372,3 +372,6 @@ a.dl{text-decoration:underline;text-underline-offset:4px}
 .ts-txt h2{margin-top:40px}
 .ts-it{max-width:66ch}
 .ts-n{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-right:4px}
+
+.inq{display:inline-block;margin-top:22px;padding:11px 20px;border:1px solid currentColor;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s}
+.inq:hover,.inq:focus-visible{background:var(--ink);color:var(--paper)}

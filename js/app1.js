@@ -80,9 +80,18 @@ function BIG(u){var m=/img\/([0-9a-f]{12})-\d+\.webp/.exec(u||''),w=m&&IMGW[m[1]
     var L=IMG[w.slug]||[],g='';cur=L;
     if(L.length){L.forEach(function(x,i){g+='<figure class="gimg"><button type="button" data-i="'+i+'" aria-label="Ingrandisci immagine '+(i+1)+'"><img src="'+x[0]+'" srcset="'+SS(x[0])+'" sizes="(max-width:860px) 50vw, 33vw" width="'+x[2]+'" height="'+x[3]+'" alt="'+esc(w.titolo+(x[1]?', '+x[1]:''))+'" loading="lazy" decoding="async"></button>'+(x[1]?'<figcaption>'+esc(x[1])+'</figcaption>':'')+'</figure>';});}
     else{g='<figure class="gimg"><div class="ph"></div></figure>';}
-    document.getElementById('operaBody').innerHTML='<a class="back" href="#opere">&larr; Opere</a><div class="exhead" style="padding-top:8px"><div><span class="k">'+(w.anni||w.anno)+'</span><h1>'+esc(w.titolo)+'</h1></div><dl><div><dt>Anno</dt><dd>'+(w.anni||w.anno)+'</dd></div>'+(w.tecnica?'<div><dt>Tecnica</dt><dd>'+esc(w.tecnica)+'</dd></div>':'')+(w.catalogo?'<div><dt>Catalogo</dt><dd><a class="dl" href="'+w.catalogo+'" target="_blank" rel="noopener">Sfoglia il catalogo (PDF)</a></dd></div>':'')+(w.mostra?'<div><dt>Mostra</dt><dd><a href="#'+w.mostra+'" style="border-bottom:1px solid currentColor">Exitus, Palazzo Doria Pamphilj, 2026</a></dd></div>':'')+(w.video?'<div><dt>Video</dt><dd><a href="'+w.video+'" target="_blank" rel="noopener" style="border-bottom:1px solid currentColor">Guarda su Vimeo</a></dd></div>':'')+'</dl></div>'+(w.testo?'<section class="exsec prose">'+paras(w.testo)+'</section>':'')+(L.length?'<section class="exsec"><h2>Immagini</h2><div class="gallery">'+g+'</div></section>':'');
+    document.getElementById('operaBody').innerHTML='<a class="back" href="#opere">&larr; Opere</a><div class="exhead" style="padding-top:8px"><div><span class="k">'+(w.anni||w.anno)+'</span><h1>'+esc(w.titolo)+'</h1><a class="inq" href="mailto:info@mariocarloiusi.com" data-slug="'+w.slug+'">Richiedi informazioni</a></div><dl><div><dt>Anno</dt><dd>'+(w.anni||w.anno)+'</dd></div>'+(w.tecnica?'<div><dt>Tecnica</dt><dd>'+esc(w.tecnica)+'</dd></div>':'')+(w.catalogo?'<div><dt>Catalogo</dt><dd><a class="dl" href="'+w.catalogo+'" target="_blank" rel="noopener">Sfoglia il catalogo (PDF)</a></dd></div>':'')+(w.mostra?'<div><dt>Mostra</dt><dd><a href="#'+w.mostra+'" style="border-bottom:1px solid currentColor">Exitus, Palazzo Doria Pamphilj, 2026</a></dd></div>':'')+(w.video?'<div><dt>Video</dt><dd><a href="'+w.video+'" target="_blank" rel="noopener" style="border-bottom:1px solid currentColor">Guarda su Vimeo</a></dd></div>':'')+'</dl></div>'+(w.testo?'<section class="exsec prose">'+paras(w.testo)+'</section>':'')+(L.length?'<section class="exsec"><h2>Immagini</h2><div class="gallery">'+g+'</div></section>':'');
     return true;
   }
+  document.getElementById('operaBody').addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a.inq');if(!a)return;
+    var w=D.opere.filter(function(x){return x.slug===a.dataset.slug;})[0];if(!w)return;
+    var en=document.documentElement.lang==='en',E={};try{E=JSON.parse(document.getElementById('enData').textContent);}catch(_){}
+    var T=function(x){return en&&E[x]?E[x]:x;},tit=T(w.titolo),an=String(w.anni||w.anno),url='https://mariocarloiusi.com/#opera-'+w.slug;
+    var sub=(en?'Inquiry: ':'Richiesta informazioni: ')+tit+', '+an;
+    var body=en?('Hello,\n\nI would like to receive more information about:\n\n'+tit+', '+an+(w.tecnica?'\n'+T(w.tecnica):'')+'\n'+url+'\n\nName:\nPhone (optional):\n\nThank you'):('Buongiorno,\n\nvorrei ricevere maggiori informazioni su:\n\n'+tit+', '+an+(w.tecnica?'\n'+w.tecnica:'')+'\n'+url+'\n\nNome:\nTelefono (facoltativo):\n\nGrazie');
+    a.href='mailto:info@mariocarloiusi.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
   function route(){
     var h=location.hash.slice(1),id=V[h];
     if(!id&&h.indexOf('opera-')===0&&renderOpera(h.slice(6)))id='view-opera';
