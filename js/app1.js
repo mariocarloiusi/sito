@@ -92,18 +92,65 @@ function BIG(u){var m=/img\/([0-9a-f]{12})-\d+\.webp/.exec(u||''),w=m&&IMGW[m[1]
     var body=en?('Hello,\n\nI would like to receive more information about:\n\n'+tit+', '+an+(w.tecnica?'\n'+T(w.tecnica):'')+'\n'+url+'\n\nName:\nPhone (optional):\n\nThank you'):('Buongiorno,\n\nvorrei ricevere maggiori informazioni su:\n\n'+tit+', '+an+(w.tecnica?'\n'+w.tecnica:'')+'\n'+url+'\n\nNome:\nTelefono (facoltativo):\n\nGrazie');
     a.href='mailto:info@mariocarloiusi.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
   });
+  var SEC={opere:1,mostre:1,luminis:1,testi:1,stampa:1,'teoria-semeion':1,info:1};
+  function isRoute(k){if(!k)return false;if(V[k])return true;
+    if(k.indexOf('opera-')===0){var sl=k.slice(6);return D.opere.some(function(w){return w.slug===sl;});}
+    if(k.indexOf('luminis-')===0){var tl=k.slice(8);return TAPPE.some(function(t){return t.slug===tl;});}
+    return false;}
+  function isEN(){return /^\/en(\/|$)/.test(location.pathname);}
+  function bare(p){return p.replace(/^\/en(?=\/|$)/,'')||'/';}
+  function keyFromPath(p){var s=bare(p).split('/').filter(Boolean);if(!s.length)return '';
+    if(s[0]==='opere')return s[1]?'opera-'+s[1]:'opere';
+    if(s[0]==='mostre')return s[1]?'mostra-'+s[1]:'mostre';
+    if(s[0]==='luminis')return s[1]?'luminis-'+s[1]:'luminis';
+    return SEC[s[0]]?s[0]:'';}
+  function pathFromKey(k,en){var p='/';
+    if(k&&k.indexOf('opera-')===0)p='/opere/'+k.slice(6)+'/';
+    else if(k&&k.indexOf('mostra-')===0)p='/mostre/'+k.slice(7)+'/';
+    else if(k&&k.indexOf('luminis-')===0)p='/luminis/'+k.slice(8)+'/';
+    else if(k&&SEC[k])p='/'+k+'/';
+    return ((en===undefined?isEN():en)?'/en':'')+p;}
+  window.__routes={isRoute:isRoute,pathFromKey:pathFromKey,keyFromPath:keyFromPath};
+  function pretty(root){Array.prototype.forEach.call((root||document).querySelectorAll('a[href^="#"],a[data-k]'),function(a){
+    var k=a.getAttribute('data-k');if(k==null){var h=a.getAttribute('href').slice(1);if(h==='top')k='';else if(isRoute(h))k=h;else return;a.setAttribute('data-k',k);}
+    var u=pathFromKey(k);if(a.getAttribute('href')!==u)a.setAttribute('href',u);});}
+  window.__pretty=pretty;
+  function curKey(){var h=location.hash.slice(1);return isRoute(h)?h:keyFromPath(location.pathname);}
   function route(){
-    var h=location.hash.slice(1),id=V[h];
+    var h=curKey(),id=V[h];
     if(!id&&h.indexOf('opera-')===0&&renderOpera(h.slice(6)))id='view-opera';
     if(!id&&h.indexOf('luminis-')===0&&renderTappa(h.slice(8)))id='view-tappa';
     var page=id?document.getElementById(id):null;
     main.hidden=!!page;
     Array.prototype.forEach.call(document.querySelectorAll('.view'),function(v){v.hidden=v!==page;});
     document.body.classList.toggle('inner',!!page);
+    pretty();
     if(page){window.scrollTo(0,0);hdr.classList.add('solid');if(h==='stampa'){var ts=document.getElementById('testi-stampa');if(ts)setTimeout(function(){ts.scrollIntoView();},0);}}
-    else{var t=h&&document.getElementById(h); if(t)t.scrollIntoView(); else window.scrollTo(0,0);}
+    else{var a=location.hash.slice(1),t=a&&document.getElementById(a); if(t)t.scrollIntoView(); else window.scrollTo(0,0);}
+    if(window.__meta&&route.done)window.__meta(h);route.done=1;
+    if(window.gcHit)window.gcHit();
   }
-  addEventListener('hashchange',route); route();
+  window.__meta=function(){setTimeout(function(){var v=document.querySelector('.view:not([hidden]) h1');document.title=v?v.textContent.trim().replace(/\s+/g,' ')+' – Mario Carlo Iusi':'Mario Carlo Iusi';},0);};
+  function go(u,anchor){history.pushState(null,'',u+(anchor?'#'+anchor:''));route();}
+  window.__go=go;
+  (function(){var h=location.hash.slice(1);if(isRoute(h))history.replaceState(null,'',pathFromKey(h));
+    else if(h==='top')history.replaceState(null,'',pathFromKey(''));})();
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var a=e.target.closest&&e.target.closest('a[href]');if(!a||a.target||a.hasAttribute('download'))return;
+    var href=a.getAttribute('href');
+    if(href.charAt(0)==='#'){var h=href.slice(1);
+      if(h==='top'||isRoute(h)){e.preventDefault();go(pathFromKey(h==='top'?'':h));return;}
+      if(curKey()!==''&&h&&document.getElementById(h)&&document.getElementById(h).closest('#top')){e.preventDefault();go(pathFromKey(''),h);}
+      return;}
+    if(href.charAt(0)!=='/'||href.charAt(1)==='/')return;
+    var k=keyFromPath(href.split('#')[0]);if(k!==''&&!isRoute(k))return;
+    if(k===''&&bare(href.split('#')[0])!=='/')return;
+    e.preventDefault();if(href===location.pathname+location.hash&&!location.hash){window.scrollTo(0,0);return;}go(href.split('#')[0],href.split('#')[1]);
+  });
+  addEventListener('popstate',route);
+  addEventListener('hashchange',function(){var h=location.hash.slice(1);if(isRoute(h)){history.replaceState(null,'',pathFromKey(h));route();}});
+  route();
   var vm=document.getElementById('view-mostre');
   Array.prototype.forEach.call(vm.querySelectorAll('.tabs button'),function(b){
     b.addEventListener('click',function(){
